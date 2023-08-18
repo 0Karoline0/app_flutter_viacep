@@ -18,45 +18,165 @@ class _CoisaState extends State<Coisa> {
 
   @override
   Widget build(BuildContext context) {
-    double cardHeight = MediaQuery.of(context).size.height * 0.4;
+    double cardHeight = MediaQuery.of(context).size.height * 0.5;
     double cardWidth = MediaQuery.of(context).size.width * 0.8;
 
     return Scaffold(
-      body: Container(
-          padding: EdgeInsets.all(40),
-          child: Stack(
+      body: Column(
+        children: [
+          Container(
+              height: cardHeight,
+              padding: EdgeInsets.all(40),
+              child: Stack(
+                children: [
+                  Card(
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          left: 10, top: 12, bottom: 12, right: 10),
+                      child: Column(children: [
+                        //============HEADER
+                        header(),
+                        //============RESULTADO
+                        Column(
+                          children: [
+                            resultado(
+                                '12345-220',
+                                'Rua 2',
+                                'n°12',
+                                'Setor Oeste',
+                                'GOIÂNIA',
+                                'GO',
+                                '12321321',
+                                'teste'),
+                            resultado(
+                                '12345-220',
+                                'Rua 2',
+                                'n°12',
+                                'Setor Oeste',
+                                'GOIÂNIA',
+                                'GO',
+                                '12321321',
+                                'teste'),
+                            resultado(
+                                '12345-220',
+                                'Rua 2',
+                                'n°12',
+                                'Setor Oeste',
+                                'GOIÂNIA',
+                                'GO',
+                                '12321321',
+                                'teste'),
+                            resultado(
+                                '12345-220',
+                                'Rua 2',
+                                'n°12',
+                                'Setor Oeste',
+                                'GOIÂNIA',
+                                'GO',
+                                '12321321',
+                                'teste'),
+                            resultado(
+                                '12345-220',
+                                'Rua 2',
+                                'n°12',
+                                'Setor Oeste',
+                                'GOIÂNIA',
+                                'GO',
+                                '12321321',
+                                'teste'),
+                            resultado(
+                                '12345-220',
+                                'Rua 2',
+                                'n°12',
+                                'Setor Oeste',
+                                'GOIÂNIA',
+                                'GO',
+                                '12321321',
+                                'teste'),
+                          ],
+                        ),
+                        //resultado(),
+                      ]),
+                    ),
+                  ),
+                  Container(
+                      height: cardHeight,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(color: Colors.black))),
+                ],
+              )),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Card(
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                      left: 10, top: 12, bottom: 12, right: 10),
-                  child: Column(children: [
-                    //============HEADER
-                    header(),
-                    //============RESULTADO
-                    resultado('12345-220', 'Rua 2', 'n°12', 'Setor Oeste',
-                        'GOIÂNIA', 'GO', '12321321', 'teste'),
-                    resultado('12345-220', 'Rua 2', 'n°12', 'Setor Oeste',
-                        'GOIÂNIA', 'GO', '12321321', 'teste'),
-                    resultado('12345-220', 'Rua 2', 'n°12', 'Setor Oeste',
-                        'GOIÂNIA', 'GO', '12321321', 'teste'),
-                    resultado('12345-220', 'Rua 2', 'n°12', 'Setor Oeste',
-                        'GOIÂNIA', 'GO', '12321321', 'teste'),
-                    resultado('12345-220', 'Rua 2', 'n°12', 'Setor Oeste',
-                        'GOIÂNIA', 'GO', '12321321', 'teste'),
-                    resultado('12345-220', 'Rua 2', 'n°12', 'Setor Oeste',
-                        'GOIÂNIA', 'GO', '12321321', 'teste'),
-                    //resultado(),
-                  ]),
-                ),
+              Padding(
+                padding: const EdgeInsets.all(40),
+                child: Container(
+                  width: cardWidth,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black),
+                        borderRadius: BorderRadius.circular(15)),
+                    child: DataTable(
+                      columns: const [
+                        DataColumn(
+                            label: Text(
+                          'CEP',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )),
+                        DataColumn(
+                            label: Text(
+                          'Logradouro',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )),
+                        DataColumn(
+                            label: Text(
+                          'Complemento',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )),
+                        DataColumn(
+                            label: Text(
+                          'Bairro',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )),
+                        DataColumn(
+                            label: Text(
+                          'Localidade',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )),
+                        DataColumn(
+                            label: Text(
+                          'UF',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )),
+                        DataColumn(
+                            label: Text(
+                          'IBGE',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )),
+                        DataColumn(
+                            label: Text(
+                          'Opções',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )),
+                      ],
+                      rows: [
+                        DataRow(cells: [
+                          DataCell(Text('123')),
+                          DataCell(Text('123')),
+                          DataCell(Text('123')),
+                          DataCell(Text('123')),
+                          DataCell(Text('123')),
+                          DataCell(Text('123')),
+                          DataCell(Text('123')),
+                          DataCell(Container(child: Icon(Icons.list),)),
+                        ])
+                      ],
+                    )),
               ),
-              Container(
-                  height: 200,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(color: Colors.black))),
             ],
-          )),
+          ),
+        ],
+      ),
     );
   }
 
