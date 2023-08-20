@@ -15,8 +15,8 @@ Widget menuLateral(double width, double height, double tamanhoIcone) {
               Container(
                 height: 100,
                 child: Image.asset(
-                  'assets/images/logo-7pay.png',
-                  //scale: 30,
+                  'assets/images/7pay-logo.png',
+                  scale: 1.3,
                 ),
               ),
             ],
@@ -60,7 +60,7 @@ Widget menuLateral(double width, double height, double tamanhoIcone) {
                 height: 20,
               ),
               Icon(
-                Icons.attach_email,
+                Icons.payments_sharp,
                 size: tamanhoIcone,
                 color: Colors.orange,
               ),
@@ -68,7 +68,7 @@ Widget menuLateral(double width, double height, double tamanhoIcone) {
                 height: 20,
               ),
               Icon(
-                Icons.attach_email,
+                Icons.note_sharp,
                 size: tamanhoIcone,
                 color: Colors.orange,
               ),
@@ -76,7 +76,7 @@ Widget menuLateral(double width, double height, double tamanhoIcone) {
                 height: 20,
               ),
               Icon(
-                Icons.attach_email,
+                Icons.stacked_bar_chart_sharp,
                 size: tamanhoIcone,
                 color: Colors.orange,
               ),
@@ -84,7 +84,7 @@ Widget menuLateral(double width, double height, double tamanhoIcone) {
                 height: 20,
               ),
               Icon(
-                Icons.attach_email,
+                Icons.pie_chart,
                 size: tamanhoIcone,
                 color: Colors.orange,
               ),
@@ -92,7 +92,7 @@ Widget menuLateral(double width, double height, double tamanhoIcone) {
                 height: 20,
               ),
               Icon(
-                Icons.attach_email,
+                Icons.widgets,
                 size: tamanhoIcone,
                 color: Colors.orange,
               ),

@@ -258,38 +258,52 @@ class _EnderecosWebState extends State<EnderecosWeb> {
                                               columns: [
                                                 DataColumn(
                                                     label: GestureDetector(
-                                                      onTap: (){lista.sort((a, b)=>a['cep'].compareTo(b['cep']));
-                                                      loadRows();},
-                                                      child: const Text(
-                                                                                                      'CEP',
-                                                                                                      style: TextStyle(
+                                                  onTap: () {
+                                                    lista.sort((a, b) =>
+                                                        a['cep'].compareTo(
+                                                            b['cep']));
+                                                    loadRows();
+                                                  },
+                                                  child: const Text(
+                                                    'CEP',
+                                                    style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.bold),
-                                                                                                    ),
-                                                    )),
+                                                  ),
+                                                )),
                                                 DataColumn(
-                                                    label: GestureDetector(
-                                                      onTap: (){lista.sort(((a, b) => a['logradouro'].compareTo(b['logradouro'])));
-                                                      loadRows();},
-                                                      child: const Text(
+                                                  label: GestureDetector(
+                                                    onTap: () {
+                                                      lista.sort(((a, b) => a[
+                                                              'logradouro']
+                                                          .compareTo(b[
+                                                              'logradouro'])));
+                                                      loadRows();
+                                                    },
+                                                    child: const Text(
                                                       'Logradouro',
                                                       style: TextStyle(
                                                           fontWeight:
                                                               FontWeight.bold),
-                                                                                                      ),
                                                     ),
+                                                  ),
                                                 ),
                                                 DataColumn(
                                                     label: GestureDetector(
-                                                      onTap: (){lista.sort(((a, b) => a['complemento'].compareTo(b['complemento'])));
-                                                      loadRows();},
-                                                      child: const Text(
-                                                                                                      'Complemento',
-                                                                                                      style: TextStyle(
+                                                  onTap: () {
+                                                    lista.sort(((a, b) => a[
+                                                            'complemento']
+                                                        .compareTo(
+                                                            b['complemento'])));
+                                                    loadRows();
+                                                  },
+                                                  child: const Text(
+                                                    'Complemento',
+                                                    style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.bold),
-                                                                                                    ),
-                                                    )),
+                                                  ),
+                                                )),
                                                 DataColumn(
                                                     label: GestureDetector(
                                                   onTap: () {
@@ -309,26 +323,35 @@ class _EnderecosWebState extends State<EnderecosWeb> {
                                                 )),
                                                 DataColumn(
                                                     label: GestureDetector(
-                                                      onTap: (){lista.sort(((a, b) => a['localidade'].compareTo(b['localidade'])));
-                                                      loadRows();},
-                                                      child: const Text(
-                                                                                                      'Localidade',
-                                                                                                      style: TextStyle(
+                                                  onTap: () {
+                                                    lista.sort(((a, b) => a[
+                                                            'localidade']
+                                                        .compareTo(
+                                                            b['localidade'])));
+                                                    loadRows();
+                                                  },
+                                                  child: const Text(
+                                                    'Localidade',
+                                                    style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.bold),
-                                                                                                    ),
-                                                    )),
+                                                  ),
+                                                )),
                                                 DataColumn(
                                                     label: GestureDetector(
-                                                      onTap: (){lista.sort(((a, b) => a['uf'].compareTo(b['uf'])));
-                                                      loadRows();},
-                                                      child: const Text(
-                                                                                                      'UF',
-                                                                                                      style: TextStyle(
+                                                  onTap: () {
+                                                    lista.sort(((a, b) =>
+                                                        a['uf'].compareTo(
+                                                            b['uf'])));
+                                                    loadRows();
+                                                  },
+                                                  child: const Text(
+                                                    'UF',
+                                                    style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.bold),
-                                                                                                    ),
-                                                    )),
+                                                  ),
+                                                )),
                                                 DataColumn(
                                                     label: Text(
                                                   'IBGE',
@@ -358,6 +381,7 @@ class _EnderecosWebState extends State<EnderecosWeb> {
                                   height: 40,
                                   width: 120,
                                   child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(primary: Colors.grey.shade800),
                                     onPressed: () {},
                                     child: Row(
                                       children: const [
