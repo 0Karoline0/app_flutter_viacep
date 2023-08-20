@@ -5,144 +5,144 @@ Widget menuLateral(double width, double height, double tamanhoIcone) {
     width: width * 0.1,
     height: height,
     color: Colors.grey[800],
-    child: Row(
-      children: [
-        SingleChildScrollView(
-          child: Column(
+    child: SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          //================HEADER
+          Column(
             children: [
-              //================HEADER
-              Column(
-                children: [
-                  Image.asset(
-                    'assets/images/joao2.jpg',
-                    scale: 30,
-                  ),
-                ],
+              Container(
+                height: 100,
+                child: Image.asset(
+                  'assets/images/logo-7pay.png',
+                  //scale: 30,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 40,
+          ),
+          //================BODY
+          Column(
+            children: [
+              Icon(
+                Icons.dehaze,
+                color: Colors.orange,
+                size: tamanhoIcone,
               ),
               const SizedBox(
                 height: 40,
               ),
-              //================BODY
-              Column(
+              Icon(
+                Icons.home_outlined,
+                color: Colors.orange,
+                size: tamanhoIcone,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Icon(
+                Icons.credit_card,
+                color: Colors.orange,
+                size: tamanhoIcone,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Icon(
+                Icons.attach_money,
+                color: Colors.orange,
+                size: tamanhoIcone,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Icon(
+                Icons.attach_email,
+                size: tamanhoIcone,
+                color: Colors.orange,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Icon(
+                Icons.attach_email,
+                size: tamanhoIcone,
+                color: Colors.orange,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Icon(
+                Icons.attach_email,
+                size: tamanhoIcone,
+                color: Colors.orange,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Icon(
+                Icons.attach_email,
+                size: tamanhoIcone,
+                color: Colors.orange,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Icon(
+                Icons.attach_email,
+                size: tamanhoIcone,
+                color: Colors.orange,
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 100,
+          ),
+          //================FOOTER
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Icon(
-                    Icons.dehaze,
-                    color: Colors.orange,
-                    size: tamanhoIcone,
-                  ),
-                  const SizedBox(
-                    height: 40,
-                  ),
-                  Icon(
-                    Icons.home_outlined,
-                    color: Colors.orange,
-                    size: tamanhoIcone,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Icon(
-                    Icons.credit_card,
-                    color: Colors.orange,
-                    size: tamanhoIcone,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Icon(
-                    Icons.attach_money,
-                    color: Colors.orange,
-                    size: tamanhoIcone,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Icon(
-                    Icons.attach_email,
-                    size: tamanhoIcone,
-                    color: Colors.orange,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Icon(
-                    Icons.attach_email,
-                    size: tamanhoIcone,
-                    color: Colors.orange,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Icon(
-                    Icons.attach_email,
-                    size: tamanhoIcone,
-                    color: Colors.orange,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Icon(
-                    Icons.attach_email,
-                    size: tamanhoIcone,
-                    color: Colors.orange,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Icon(
-                    Icons.attach_email,
-                    size: tamanhoIcone,
-                    color: Colors.orange,
+                  Container(
+                      margin: const EdgeInsets.only(right: 10, left: 5),
+                      child: const Icon(
+                        Icons.info_outline_rounded,
+                        color: Colors.orange,
+                      )),
+                  const Text(
+                    'Ajuda',
+                    style: TextStyle(color: Colors.white),
                   ),
                 ],
               ),
               const SizedBox(
-                height: 100,
+                height: 30,
               ),
-              //================FOOTER
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                          margin: const EdgeInsets.only(right: 10),
-                          child: const Icon(
-                            Icons.info_outline_rounded,
-                            color: Colors.orange,
-                          )),
-                      const Text(
-                        'Ajuda',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                          margin: const EdgeInsets.only(right: 10),
-                          child: const Icon(
-                            Icons.settings_outlined,
-                            color: Colors.orange,
-                            size: 30,
-                          )),
-                      const Text(
-                        'Configurações',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ],
+                  Container(
+                      margin: const EdgeInsets.only(right: 10, left: 5),
+                      child: const Icon(
+                        Icons.settings_outlined,
+                        color: Colors.orange,
+                        size: 30,
+                      )),
+                  const Text(
+                    'Configurações',
+                    style: TextStyle(color: Colors.white),
                   ),
                 ],
               ),
             ],
           ),
-        ),
-      ],
+        ],
+      ),
     ),
   );
 }

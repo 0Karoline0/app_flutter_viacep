@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:teste_7pay/pesquisa/pesquisa.dart';
-import 'package:teste_7pay/web_widgets/barra_pesquisa.dart';
 import 'package:teste_7pay/web_widgets/header.dart';
 import 'package:teste_7pay/web_widgets/menuLateral.dart';
-import 'package:teste_7pay/web_widgets/resultados2.dart';
 import 'package:teste_7pay/web_widgets/return.dart';
-import 'package:teste_7pay/web_widgets/table.dart';
 
 class EnderecosWeb extends StatefulWidget {
   const EnderecosWeb({Key? key}) : super(key: key);
@@ -15,7 +12,6 @@ class EnderecosWeb extends StatefulWidget {
 }
 
 class _EnderecosWebState extends State<EnderecosWeb> {
-
   List<DataRow> dataRows = [];
   var lista = [];
 
@@ -48,23 +44,25 @@ class _EnderecosWebState extends State<EnderecosWeb> {
                     child: Row(
                       children: [
                         Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             header(screenWidth, screenHeight),
+                            Container(
+                              width: screenWidth * 0.9,
+                              height: 0.2,
+                              color: Colors.black,
+                            ),
                             voltar(screenWidth, screenHeight),
                             //=======================BARRA DE PESQUISA
                             Column(
                               children: [
-                                const SizedBox(
-                                  height: 15,
-                                ),
                                 Stack(
                                   alignment: Alignment.center,
                                   children: [
                                     Container(
-                                      height: 160,
+                                      height: 120,
                                       width: screenWidth * 0.9,
-                                      padding: const EdgeInsets.all(40),
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 20, horizontal: 40),
                                       child: Container(
                                         decoration: BoxDecoration(
                                           border:
@@ -132,7 +130,7 @@ class _EnderecosWebState extends State<EnderecosWeb> {
                                                 Radius.circular(20),
                                               )),
                                           child: TextField(
-                                            controller: ufController,
+                                              controller: ufController,
                                               decoration: const InputDecoration(
                                                   hintText: 'UF',
                                                   icon: Padding(
@@ -150,18 +148,38 @@ class _EnderecosWebState extends State<EnderecosWeb> {
                                             var uf = ufController.text;
                                             var cidade = cidadeController.text;
                                             var logradouro = logController.text;
-                                            
-                                            pesquisar('GO', 'Goiânia', 'Rua 20');
-                                            loadRows();
-                                            
-                                            // if (!(uf == "" || cidade == "" || logradouro == "")){
-                                            //   await pesquisar(uf, cidade, logradouro);
-                                            //   loadRows();
-                                            // }else{
-                                            //   showDialog(context: context, builder: ((context) => AlertDialog(content: Text('Todos os campos precisam ser preenchidos!'), title: Center(child: Text('ERRO')),)));
-                                            // }
-                                          
-                                          
+
+                                            if (!(uf == "" ||
+                                                cidade == "" ||
+                                                logradouro == "")) {
+                                              await pesquisar(
+                                                  uf, cidade, logradouro);
+                                              if (lista.isEmpty) {
+                                                showDialog(
+                                                    context: context,
+                                                    builder: (context) =>
+                                                        const AlertDialog(
+                                                          title: Center(
+                                                              child: Text(
+                                                                  'ALERTA')),
+                                                          content: Text(
+                                                              'Não foram encontrados resultados para sua busca'),
+                                                        ));
+                                              } else {
+                                                loadRows();
+                                              }
+                                            } else {
+                                              showDialog(
+                                                  context: context,
+                                                  builder: ((context) =>
+                                                      const AlertDialog(
+                                                        content: Text(
+                                                            'Todos os campos precisam ser preenchidos!'),
+                                                        title: Center(
+                                                            child:
+                                                                Text('ERRO')),
+                                                      )));
+                                            }
                                           },
                                           style: ElevatedButton.styleFrom(
                                               primary: Colors.grey[850],
@@ -228,58 +246,89 @@ class _EnderecosWebState extends State<EnderecosWeb> {
                                     SingleChildScrollView(
                                       scrollDirection: Axis.vertical,
                                       child: Container(
-                                        height: screenHeight * 0.4,
+                                          height: screenHeight * 0.45,
                                           width: screenWidth * 0.85,
                                           decoration: BoxDecoration(
                                               border: Border.all(
                                                   color: Colors.black),
                                               borderRadius:
                                                   BorderRadius.circular(15)),
-                                          child: ListView(
-                                            children: [DataTable(
-                                              columns: const [
+                                          child: ListView(children: [
+                                            DataTable(
+                                              columns: [
                                                 DataColumn(
-                                                    label: Text(
-                                                  'CEP',
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold),
+                                                    label: GestureDetector(
+                                                      onTap: (){lista.sort((a, b)=>a['cep'].compareTo(b['cep']));
+                                                      loadRows();},
+                                                      child: const Text(
+                                                                                                      'CEP',
+                                                                                                      style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                                                                    ),
+                                                    )),
+                                                DataColumn(
+                                                    label: GestureDetector(
+                                                      onTap: (){lista.sort(((a, b) => a['logradouro'].compareTo(b['logradouro'])));
+                                                      loadRows();},
+                                                      child: const Text(
+                                                      'Logradouro',
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                                                                      ),
+                                                    ),
+                                                ),
+                                                DataColumn(
+                                                    label: GestureDetector(
+                                                      onTap: (){lista.sort(((a, b) => a['complemento'].compareTo(b['complemento'])));
+                                                      loadRows();},
+                                                      child: const Text(
+                                                                                                      'Complemento',
+                                                                                                      style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                                                                    ),
+                                                    )),
+                                                DataColumn(
+                                                    label: GestureDetector(
+                                                  onTap: () {
+                                                    lista.sort(
+                                                      (a, b) => a['bairro']
+                                                          .compareTo(
+                                                              b['bairro']),
+                                                    );
+                                                    loadRows();
+                                                  },
+                                                  child: const Text(
+                                                    'Bairro',
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
                                                 )),
                                                 DataColumn(
-                                                    label: Text(
-                                                  'Logradouro',
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                )),
+                                                    label: GestureDetector(
+                                                      onTap: (){lista.sort(((a, b) => a['localidade'].compareTo(b['localidade'])));
+                                                      loadRows();},
+                                                      child: const Text(
+                                                                                                      'Localidade',
+                                                                                                      style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                                                                    ),
+                                                    )),
                                                 DataColumn(
-                                                    label: Text(
-                                                  'Complemento',
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                )),
-                                                DataColumn(
-                                                    label: Text(
-                                                  'Bairro',
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                )),
-                                                DataColumn(
-                                                    label: Text(
-                                                  'Localidade',
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                )),
-                                                DataColumn(
-                                                    label: Text(
-                                                  'UF',
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                )),
+                                                    label: GestureDetector(
+                                                      onTap: (){lista.sort(((a, b) => a['uf'].compareTo(b['uf'])));
+                                                      loadRows();},
+                                                      child: const Text(
+                                                                                                      'UF',
+                                                                                                      style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                                                                    ),
+                                                    )),
                                                 DataColumn(
                                                     label: Text(
                                                   'IBGE',
@@ -297,12 +346,33 @@ class _EnderecosWebState extends State<EnderecosWeb> {
                                               ],
                                               rows: dataRows,
                                             ),
-                                  ])),
+                                          ])),
                                     ),
                                   ],
                                 ),
                               ],
-                            )
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 20),
+                              child: Container(
+                                  height: 40,
+                                  width: 120,
+                                  child: ElevatedButton(
+                                    onPressed: () {},
+                                    child: Row(
+                                      children: const [
+                                        Icon(Icons.arrow_back),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Text(
+                                          'VOLTAR',
+                                          style: TextStyle(fontSize: 15),
+                                        ),
+                                      ],
+                                    ),
+                                  )),
+                            ),
                           ],
                         )
                       ],
@@ -319,16 +389,18 @@ class _EnderecosWebState extends State<EnderecosWeb> {
 
   Future<void> loadRows() async {
     await createRows();
-    setState(() {
-    });
+    setState(() {});
   }
 
   Future pesquisar(String uf, String cidade, String logradouro) async {
-    lista = await Pesquisa.fetch(uf, cidade, logradouro);
+    try {
+      lista = await Pesquisa.fetch(uf, cidade, logradouro);
+    } catch (xmlError) {
+      lista = [];
+    }
   }
 
   Future createRows() async {
-
     dataRows.clear();
 
     for (int i = 0; i < lista.length; i++) {
@@ -345,8 +417,7 @@ class _EnderecosWebState extends State<EnderecosWeb> {
   }
 }
 
-
-  DataRow rows(String cep, String logradouro, String complemento, String bairro,
+DataRow rows(String cep, String logradouro, String complemento, String bairro,
     String localidade, String uf, String ibge) {
   return DataRow(cells: [
     DataCell(Text(cep)),
